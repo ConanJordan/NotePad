@@ -27,6 +27,10 @@ Public Class NotePad
             ' 变更窗口的标题内容
             Me.fileName = Path.GetFileName(Me.filePath)  ' 获取当前文件的文件名(含扩展名，不含路径)
             Me.Text = Me.fileName & NOTE_PAD
+
+            ' 重置文本内容和文本内容变更标识符
+            Me.currentContent = TB_Editor.Text
+            Me.isEdited = False
         End If
 
     End Sub
