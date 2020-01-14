@@ -1,6 +1,6 @@
 ﻿Public Class NotePad
 
-    Private fileName As String = Nothing  ' 当前文件的文件名(具体路径)
+    Private filePath As String = Nothing  ' 当前文件的文件名(具体路径)
     Private fileNumber As Integer  ' 当前文件的文件号码
     Private currentContent As String  ' 原文件缓存内容：用于比较当前文本框内容和文件内容是否一致
     Private isEdited As Boolean = False  ' 文件内容变更标识符
@@ -8,11 +8,11 @@
     ' 保存文件
     Private Sub MI_Save_Click(sender As Object, e As EventArgs) Handles MI_Save.Click
 
-        If Me.fileName = Nothing Then  ' 当前文件未被保存
+        If Me.filePath = Nothing Then  ' 当前文件未被保存
             MI_SaveAs_Click(sender, e)  ' 调用【另存为】按钮
         Else
             Me.fileNumber = FreeFile()  ' 获取文件号码
-            FileOpen(Me.fileNumber, fileName, OpenMode.Output)  ' 以写入模式打开文件
+            FileOpen(Me.fileNumber, filePath, OpenMode.Output)  ' 以写入模式打开文件
             PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容逐行写入文件
             FileClose(Me.fileNumber)  ' 关闭文件
             Me.isEdited = False
@@ -25,7 +25,7 @@
         Dim buff As String
 
         If Dialog_OpenFile.ShowDialog() = DialogResult.OK Then  ' 点击文件打开对话框的【打开】按钮
-            Me.fileName = Dialog_OpenFile.FileName
+            Me.filePath = Dialog_OpenFile.FileName  ' 获取文件路径
         Else
             Exit Sub
         End If
@@ -33,7 +33,7 @@
         fileNumber = FreeFile()  ' 取得文件号码
         TB_Editor.Text = ""  ' 清空文本框内容
         Me.currentContent = ""  ' 清空原文件缓存内容
-        FileOpen(Me.fileNumber, Me.fileName, OpenMode.Input)  ' 已读取模式打开文件
+        FileOpen(Me.fileNumber, Me.filePath, OpenMode.Input)  ' 已读取模式打开文件
         Do Until EOF(Me.fileNumber)
             buff = LineInput(Me.fileNumber)  ' 逐行读取文件
             TB_Editor.Text = TB_Editor.Text & buff & vbCrLf  ' 在文本框里逐行写入文件
@@ -51,13 +51,13 @@
     ' 另存为
     Private Sub MI_SaveAs_Click(sender As Object, e As EventArgs) Handles MI_SaveAs.Click
         If Dialog_SaveFile.ShowDialog() = DialogResult.OK Then  ' 点击文件保存对话框的【保存】按钮
-            Me.fileName = Dialog_SaveFile.FileName  ' 获取文件名
+            Me.filePath = Dialog_SaveFile.FileName  ' 获取文件路径
         Else
             Exit Sub
         End If
 
         Me.fileNumber = FreeFile()  ' 获取文件号码
-        FileOpen(Me.fileNumber, Me.fileName, OpenMode.Output)  ' 以写入模式打开文件
+        FileOpen(Me.fileNumber, Me.filePath, OpenMode.Output)  ' 以写入模式打开文件
         PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容逐行写入文件
         FileClose(Me.fileNumber)  ' 关闭文件
         Me.isEdited = False
