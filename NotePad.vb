@@ -54,4 +54,10 @@
         PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容逐行写入文件
         FileClose(Me.fileNumber)  ' 关闭文件
     End Sub
+
+    ' 新建
+    Private Sub MI_Create_Click(sender As Object, e As EventArgs) Handles MI_Create.Click
+        Dim newPad As NotePad = New NotePad
+        newPad.Show()
+    End Sub
 End Class
