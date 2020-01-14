@@ -1,21 +1,20 @@
 ﻿Public Class NotePad
 
-    Private fileName As String  ' 当前文件的文件名(具体路径)
+    Private fileName As String = Nothing  ' 当前文件的文件名(具体路径)
     Private fileNumber As Integer  ' 当前文件的文件号码
 
     ' 保存文件
     Private Sub MI_Save_Click(sender As Object, e As EventArgs) Handles MI_Save.Click
 
-        If Dialog_SaveFile.ShowDialog() = DialogResult.OK Then  ' 点击文件保存对话框的【保存按钮】
-            Me.fileName = Dialog_SaveFile.FileName  ' 获取文件名
+        If Me.fileName = Nothing Then  ' 当前文件未被保存
+            MI_SaveAs_Click(sender, e)  ' 调用【另存为】按钮
         Else
-            Exit Sub
+            Me.fileNumber = FreeFile()  ' 获取文件号码
+            FileOpen(Me.fileNumber, fileName, OpenMode.Output)  ' 以写入模式打开文件
+            PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容逐行写入文件
+            FileClose(Me.fileNumber)  ' 关闭文件
         End If
 
-        Me.fileNumber = FreeFile()  ' 获取文件号码
-        FileOpen(Me.fileNumber, Me.fileName, OpenMode.Output)  ' 以写入模式打开文件
-        PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容换行写入文件
-        FileClose(Me.fileNumber)  ' 关闭文件
     End Sub
 
     ' 打开文件
@@ -40,5 +39,19 @@
     ' 退出
     Private Sub MI_Exit_Click(sender As Object, e As EventArgs) Handles MI_Exit.Click
         Application.Exit()
+    End Sub
+
+    ' 另存为
+    Private Sub MI_SaveAs_Click(sender As Object, e As EventArgs) Handles MI_SaveAs.Click
+        If Dialog_SaveFile.ShowDialog() = DialogResult.OK Then  ' 点击文件保存对话框的【保存】按钮
+            Me.fileName = Dialog_SaveFile.FileName  ' 获取文件名
+        Else
+            Exit Sub
+        End If
+
+        Me.fileNumber = FreeFile()  ' 获取文件号码
+        FileOpen(Me.fileNumber, Me.fileName, OpenMode.Output)  ' 以写入模式打开文件
+        PrintLine(Me.fileNumber, TB_Editor.Text)  ' 把文本框的内容逐行写入文件
+        FileClose(Me.fileNumber)  ' 关闭文件
     End Sub
 End Class
