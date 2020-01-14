@@ -36,4 +36,9 @@
         Loop
         FileClose(Me.fileNumber)  ' 关闭文件
     End Sub
+
+    ' 退出
+    Private Sub MI_Exit_Click(sender As Object, e As EventArgs) Handles MI_Exit.Click
+        Application.Exit()
+    End Sub
 End Class
