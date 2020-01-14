@@ -30,9 +30,6 @@ Partial Class NotePad
         Me.MI_SaveAs = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Edit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Format = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_View = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Revert = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Cut = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Copy = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,12 +39,17 @@ Partial Class NotePad
         Me.MI_Replace = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_SelectAll = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Now = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Format = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_AutoWrapped = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Font = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_View = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Zoom = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Status = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_AboutNotePad = New System.Windows.Forms.ToolStripMenuItem()
         Me.TB_Editor = New System.Windows.Forms.TextBox()
+        Me.Dialog_SaveFile = New System.Windows.Forms.SaveFileDialog()
+        Me.Dialog_OpenFile = New System.Windows.Forms.OpenFileDialog()
         Me.Menu1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -105,12 +107,78 @@ Partial Class NotePad
         Me.Menu_Edit.Size = New System.Drawing.Size(67, 24)
         Me.Menu_Edit.Text = "编辑(&E)"
         '
+        'MI_Revert
+        '
+        Me.MI_Revert.Name = "MI_Revert"
+        Me.MI_Revert.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Revert.Text = "撤销(&U)"
+        '
+        'MI_Cut
+        '
+        Me.MI_Cut.Name = "MI_Cut"
+        Me.MI_Cut.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Cut.Text = "剪切(&T)"
+        '
+        'MI_Copy
+        '
+        Me.MI_Copy.Name = "MI_Copy"
+        Me.MI_Copy.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Copy.Text = "复制(&C)"
+        '
+        'MI_Paste
+        '
+        Me.MI_Paste.Name = "MI_Paste"
+        Me.MI_Paste.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Paste.Text = "粘贴(&P)"
+        '
+        'MI_Delete
+        '
+        Me.MI_Delete.Name = "MI_Delete"
+        Me.MI_Delete.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Delete.Text = "删除(&L)"
+        '
+        'MI_Find
+        '
+        Me.MI_Find.Name = "MI_Find"
+        Me.MI_Find.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Find.Text = "查找(&F)"
+        '
+        'MI_Replace
+        '
+        Me.MI_Replace.Name = "MI_Replace"
+        Me.MI_Replace.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Replace.Text = "替换(&R)"
+        '
+        'MI_SelectAll
+        '
+        Me.MI_SelectAll.Name = "MI_SelectAll"
+        Me.MI_SelectAll.Size = New System.Drawing.Size(161, 24)
+        Me.MI_SelectAll.Text = "全选(&A)"
+        '
+        'MI_Now
+        '
+        Me.MI_Now.Name = "MI_Now"
+        Me.MI_Now.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Now.Text = "时间/日期(&D)"
+        '
         'Menu_Format
         '
         Me.Menu_Format.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_AutoWrapped, Me.MI_Font})
         Me.Menu_Format.Name = "Menu_Format"
         Me.Menu_Format.Size = New System.Drawing.Size(70, 24)
         Me.Menu_Format.Text = "格式(O)"
+        '
+        'MI_AutoWrapped
+        '
+        Me.MI_AutoWrapped.Name = "MI_AutoWrapped"
+        Me.MI_AutoWrapped.Size = New System.Drawing.Size(158, 24)
+        Me.MI_AutoWrapped.Text = "自动换行(&W)"
+        '
+        'MI_Font
+        '
+        Me.MI_Font.Name = "MI_Font"
+        Me.MI_Font.Size = New System.Drawing.Size(158, 24)
+        Me.MI_Font.Text = "字体(&F)"
         '
         'Menu_View
         '
@@ -119,6 +187,18 @@ Partial Class NotePad
         Me.Menu_View.Size = New System.Drawing.Size(68, 24)
         Me.Menu_View.Text = "查看(V)"
         '
+        'MI_Zoom
+        '
+        Me.MI_Zoom.Name = "MI_Zoom"
+        Me.MI_Zoom.Size = New System.Drawing.Size(138, 24)
+        Me.MI_Zoom.Text = "缩放(&Z)"
+        '
+        'MI_Status
+        '
+        Me.MI_Status.Name = "MI_Status"
+        Me.MI_Status.Size = New System.Drawing.Size(138, 24)
+        Me.MI_Status.Text = "状态栏(&S)"
+        '
         'Menu_Help
         '
         Me.Menu_Help.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_AboutNotePad})
@@ -126,88 +206,10 @@ Partial Class NotePad
         Me.Menu_Help.Size = New System.Drawing.Size(70, 24)
         Me.Menu_Help.Text = "帮助(H)"
         '
-        'MI_Revert
-        '
-        Me.MI_Revert.Name = "MI_Revert"
-        Me.MI_Revert.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Revert.Text = "撤销(&U)"
-        '
-        'MI_Cut
-        '
-        Me.MI_Cut.Name = "MI_Cut"
-        Me.MI_Cut.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Cut.Text = "剪切(&T)"
-        '
-        'MI_Copy
-        '
-        Me.MI_Copy.Name = "MI_Copy"
-        Me.MI_Copy.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Copy.Text = "复制(&C)"
-        '
-        'MI_Paste
-        '
-        Me.MI_Paste.Name = "MI_Paste"
-        Me.MI_Paste.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Paste.Text = "粘贴(&P)"
-        '
-        'MI_Delete
-        '
-        Me.MI_Delete.Name = "MI_Delete"
-        Me.MI_Delete.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Delete.Text = "删除(&L)"
-        '
-        'MI_Find
-        '
-        Me.MI_Find.Name = "MI_Find"
-        Me.MI_Find.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Find.Text = "查找(&F)"
-        '
-        'MI_Replace
-        '
-        Me.MI_Replace.Name = "MI_Replace"
-        Me.MI_Replace.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Replace.Text = "替换(&R)"
-        '
-        'MI_SelectAll
-        '
-        Me.MI_SelectAll.Name = "MI_SelectAll"
-        Me.MI_SelectAll.Size = New System.Drawing.Size(180, 24)
-        Me.MI_SelectAll.Text = "全选(&A)"
-        '
-        'MI_Now
-        '
-        Me.MI_Now.Name = "MI_Now"
-        Me.MI_Now.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Now.Text = "时间/日期(&D)"
-        '
-        'MI_AutoWrapped
-        '
-        Me.MI_AutoWrapped.Name = "MI_AutoWrapped"
-        Me.MI_AutoWrapped.Size = New System.Drawing.Size(180, 24)
-        Me.MI_AutoWrapped.Text = "自动换行(&W)"
-        '
-        'MI_Font
-        '
-        Me.MI_Font.Name = "MI_Font"
-        Me.MI_Font.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Font.Text = "字体(&F)"
-        '
-        'MI_Zoom
-        '
-        Me.MI_Zoom.Name = "MI_Zoom"
-        Me.MI_Zoom.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Zoom.Text = "缩放(&Z)"
-        '
-        'MI_Status
-        '
-        Me.MI_Status.Name = "MI_Status"
-        Me.MI_Status.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Status.Text = "状态栏(&S)"
-        '
         'MI_AboutNotePad
         '
         Me.MI_AboutNotePad.Name = "MI_AboutNotePad"
-        Me.MI_AboutNotePad.Size = New System.Drawing.Size(180, 24)
+        Me.MI_AboutNotePad.Size = New System.Drawing.Size(168, 24)
         Me.MI_AboutNotePad.Text = "关于记事本(&A)"
         '
         'TB_Editor
@@ -221,6 +223,16 @@ Partial Class NotePad
         Me.TB_Editor.Name = "TB_Editor"
         Me.TB_Editor.Size = New System.Drawing.Size(800, 422)
         Me.TB_Editor.TabIndex = 1
+        '
+        'Dialog_SaveFile
+        '
+        Me.Dialog_SaveFile.DefaultExt = "txt"
+        Me.Dialog_SaveFile.Filter = "文本文件(*.txt)|*.txt"
+        '
+        'Dialog_OpenFile
+        '
+        Me.Dialog_OpenFile.FileName = "OpenFileDialog1"
+        Me.Dialog_OpenFile.Filter = "文本文件(*.txt)|*.txt"
         '
         'NotePad
         '
@@ -265,4 +277,6 @@ Partial Class NotePad
     Friend WithEvents MI_Status As ToolStripMenuItem
     Friend WithEvents MI_AboutNotePad As ToolStripMenuItem
     Friend WithEvents TB_Editor As TextBox
+    Friend WithEvents Dialog_SaveFile As SaveFileDialog
+    Friend WithEvents Dialog_OpenFile As OpenFileDialog
 End Class
