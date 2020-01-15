@@ -122,4 +122,41 @@ Public Class NotePad
             End If
         End If
     End Sub
+
+    Private Sub MI_Now_Click(sender As Object, e As EventArgs) Handles MI_Now.Click
+
+    End Sub
+
+    ' 剪切
+    Private Sub MI_Cut_Click(sender As Object, e As EventArgs) Handles MI_Cut.Click
+        TB_Editor.Cut()
+    End Sub
+
+    ' 粘贴
+    Private Sub MI_Paste_Click(sender As Object, e As EventArgs) Handles MI_Paste.Click
+        TB_Editor.Paste()
+    End Sub
+
+    ' 复制
+    Private Sub MI_Copy_Click(sender As Object, e As EventArgs) Handles MI_Copy.Click
+        TB_Editor.Copy()
+    End Sub
+
+    ' 全选
+    Private Sub MI_SelectAll_Click(sender As Object, e As EventArgs) Handles MI_SelectAll.Click
+        TB_Editor.SelectAll()
+    End Sub
+
+    ' 删除
+    Private Sub MI_Delete_Click(sender As Object, e As EventArgs) Handles MI_Delete.Click
+        Dim text As String = TB_Editor.Text
+        text = text.Remove(TB_Editor.SelectionStart, TB_Editor.SelectionLength)  ' 删除选中的文本内容
+        TB_Editor.Text = text
+    End Sub
+
+    ' 撤销
+    Private Sub MI_Revert_Click(sender As Object, e As EventArgs) Handles MI_Revert.Click
+        TB_Editor.Undo()
+    End Sub
+
 End Class

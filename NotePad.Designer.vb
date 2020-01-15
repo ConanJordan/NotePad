@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class NotePad
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class NotePad
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Menu1 = New System.Windows.Forms.MenuStrip()
         Me.Menu_File = New System.Windows.Forms.ToolStripMenuItem()
@@ -74,21 +74,21 @@ Partial Class NotePad
         '
         Me.MI_Create.Name = "MI_Create"
         Me.MI_Create.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.MI_Create.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Create.Size = New System.Drawing.Size(240, 24)
         Me.MI_Create.Text = "新建(&N)"
         '
         'MI_Open
         '
         Me.MI_Open.Name = "MI_Open"
         Me.MI_Open.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.MI_Open.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Open.Size = New System.Drawing.Size(240, 24)
         Me.MI_Open.Text = "打开(&O)"
         '
         'MI_Save
         '
         Me.MI_Save.Name = "MI_Save"
         Me.MI_Save.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.MI_Save.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Save.Size = New System.Drawing.Size(240, 24)
         Me.MI_Save.Text = "保存(&S)"
         '
         'MI_SaveAs
@@ -102,7 +102,7 @@ Partial Class NotePad
         'MI_Exit
         '
         Me.MI_Exit.Name = "MI_Exit"
-        Me.MI_Exit.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Exit.Size = New System.Drawing.Size(240, 24)
         Me.MI_Exit.Text = "退出(&X)"
         '
         'Menu_Edit
@@ -115,55 +115,64 @@ Partial Class NotePad
         'MI_Revert
         '
         Me.MI_Revert.Name = "MI_Revert"
-        Me.MI_Revert.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Revert.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
+        Me.MI_Revert.Size = New System.Drawing.Size(180, 24)
         Me.MI_Revert.Text = "撤销(&U)"
         '
         'MI_Cut
         '
         Me.MI_Cut.Name = "MI_Cut"
-        Me.MI_Cut.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        Me.MI_Cut.Size = New System.Drawing.Size(180, 24)
         Me.MI_Cut.Text = "剪切(&T)"
         '
         'MI_Copy
         '
         Me.MI_Copy.Name = "MI_Copy"
-        Me.MI_Copy.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.MI_Copy.Size = New System.Drawing.Size(180, 24)
         Me.MI_Copy.Text = "复制(&C)"
         '
         'MI_Paste
         '
         Me.MI_Paste.Name = "MI_Paste"
-        Me.MI_Paste.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.MI_Paste.Size = New System.Drawing.Size(180, 24)
         Me.MI_Paste.Text = "粘贴(&P)"
         '
         'MI_Delete
         '
         Me.MI_Delete.Name = "MI_Delete"
-        Me.MI_Delete.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Delete.ShortcutKeys = System.Windows.Forms.Keys.Delete
+        Me.MI_Delete.Size = New System.Drawing.Size(180, 24)
         Me.MI_Delete.Text = "删除(&L)"
         '
         'MI_Find
         '
         Me.MI_Find.Name = "MI_Find"
-        Me.MI_Find.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Find.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
+        Me.MI_Find.Size = New System.Drawing.Size(180, 24)
         Me.MI_Find.Text = "查找(&F)"
         '
         'MI_Replace
         '
         Me.MI_Replace.Name = "MI_Replace"
-        Me.MI_Replace.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Replace.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.MI_Replace.Size = New System.Drawing.Size(180, 24)
         Me.MI_Replace.Text = "替换(&R)"
         '
         'MI_SelectAll
         '
         Me.MI_SelectAll.Name = "MI_SelectAll"
-        Me.MI_SelectAll.Size = New System.Drawing.Size(161, 24)
+        Me.MI_SelectAll.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.MI_SelectAll.Size = New System.Drawing.Size(180, 24)
         Me.MI_SelectAll.Text = "全选(&A)"
         '
         'MI_Now
         '
         Me.MI_Now.Name = "MI_Now"
-        Me.MI_Now.Size = New System.Drawing.Size(161, 24)
+        Me.MI_Now.ShortcutKeys = System.Windows.Forms.Keys.F5
+        Me.MI_Now.Size = New System.Drawing.Size(185, 24)
         Me.MI_Now.Text = "时间/日期(&D)"
         '
         'Menu_Format
