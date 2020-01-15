@@ -51,10 +51,14 @@ Public Class NotePad
         FileOpen(Me.fileNumber, Me.filePath, OpenMode.Input)  ' 已读取模式打开文件
         Do Until EOF(Me.fileNumber)
             buff = LineInput(Me.fileNumber)  ' 逐行读取文件
-            TB_Editor.Text = TB_Editor.Text & buff & vbCrLf  ' 在文本框里逐行写入文件
+            'TB_Editor.Text = TB_Editor.Text & buff & vbCrLf  ' 在文本框里逐行写入文件
             Me.currentContent = Me.currentContent & buff & vbCrLf  ' 向原文件缓存内容里写入数据
         Loop
         FileClose(Me.fileNumber)  ' 关闭文件
+
+        ' 去掉文本末尾的换行符
+        Me.currentContent = Me.currentContent.Substring(0, Me.currentContent.Length - 1)
+        TB_Editor.Text = Me.currentContent
         Me.isEdited = False
 
         ' 变更窗口的标题内容
