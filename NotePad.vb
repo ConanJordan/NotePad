@@ -201,4 +201,13 @@ Public Class NotePad
         ' 默认的缩放大小保存在字体对话框中，所以从那么读取
         TB_Editor.Font = Dialog_Font.Font
     End Sub
+
+    ' 关于记事本
+    Private Sub MI_AboutNotePad_Click(sender As Object, e As EventArgs) Handles MI_AboutNotePad.Click
+        MessageBox.Show(
+            "这是一个记事本软件。已实现Windows自带记事本软件的核心内容。" & vbCrLf &
+            "@Author 李敦煌",
+            "记事本",
+            MessageBoxButtons.OK)
+    End Sub
 End Class
