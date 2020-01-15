@@ -164,4 +164,11 @@ Public Class NotePad
         MI_AutoWrapped.Checked = Not MI_AutoWrapped.Checked  ' 设置【自动换行】按钮的选中标识
         TB_Editor.WordWrap = MI_AutoWrapped.Checked  ' 设置文本框的【文字换行】属性
     End Sub
+
+    ' 字体
+    Private Sub MI_Font_Click(sender As Object, e As EventArgs) Handles MI_Font.Click
+        If Dialog_Font.ShowDialog() = DialogResult.OK Then
+            TB_Editor.Font = Dialog_Font.Font
+        End If
+    End Sub
 End Class

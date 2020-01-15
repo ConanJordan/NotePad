@@ -50,6 +50,7 @@ Partial Class NotePad
         Me.TB_Editor = New System.Windows.Forms.TextBox()
         Me.Dialog_SaveFile = New System.Windows.Forms.SaveFileDialog()
         Me.Dialog_OpenFile = New System.Windows.Forms.OpenFileDialog()
+        Me.Dialog_Font = New System.Windows.Forms.FontDialog()
         Me.Menu1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -116,56 +117,56 @@ Partial Class NotePad
         '
         Me.MI_Revert.Name = "MI_Revert"
         Me.MI_Revert.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.MI_Revert.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Revert.Size = New System.Drawing.Size(185, 24)
         Me.MI_Revert.Text = "撤销(&U)"
         '
         'MI_Cut
         '
         Me.MI_Cut.Name = "MI_Cut"
         Me.MI_Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.MI_Cut.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Cut.Size = New System.Drawing.Size(185, 24)
         Me.MI_Cut.Text = "剪切(&T)"
         '
         'MI_Copy
         '
         Me.MI_Copy.Name = "MI_Copy"
         Me.MI_Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.MI_Copy.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Copy.Size = New System.Drawing.Size(185, 24)
         Me.MI_Copy.Text = "复制(&C)"
         '
         'MI_Paste
         '
         Me.MI_Paste.Name = "MI_Paste"
         Me.MI_Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.MI_Paste.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Paste.Size = New System.Drawing.Size(185, 24)
         Me.MI_Paste.Text = "粘贴(&P)"
         '
         'MI_Delete
         '
         Me.MI_Delete.Name = "MI_Delete"
         Me.MI_Delete.ShortcutKeys = System.Windows.Forms.Keys.Delete
-        Me.MI_Delete.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Delete.Size = New System.Drawing.Size(185, 24)
         Me.MI_Delete.Text = "删除(&L)"
         '
         'MI_Find
         '
         Me.MI_Find.Name = "MI_Find"
         Me.MI_Find.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
-        Me.MI_Find.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Find.Size = New System.Drawing.Size(185, 24)
         Me.MI_Find.Text = "查找(&F)"
         '
         'MI_Replace
         '
         Me.MI_Replace.Name = "MI_Replace"
         Me.MI_Replace.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.MI_Replace.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Replace.Size = New System.Drawing.Size(185, 24)
         Me.MI_Replace.Text = "替换(&R)"
         '
         'MI_SelectAll
         '
         Me.MI_SelectAll.Name = "MI_SelectAll"
         Me.MI_SelectAll.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.MI_SelectAll.Size = New System.Drawing.Size(180, 24)
+        Me.MI_SelectAll.Size = New System.Drawing.Size(185, 24)
         Me.MI_SelectAll.Text = "全选(&A)"
         '
         'MI_Now
@@ -193,7 +194,7 @@ Partial Class NotePad
         'MI_Font
         '
         Me.MI_Font.Name = "MI_Font"
-        Me.MI_Font.Size = New System.Drawing.Size(158, 24)
+        Me.MI_Font.Size = New System.Drawing.Size(180, 24)
         Me.MI_Font.Text = "字体(&F)"
         '
         'Menu_View
@@ -250,6 +251,10 @@ Partial Class NotePad
         Me.Dialog_OpenFile.FileName = "OpenFileDialog1"
         Me.Dialog_OpenFile.Filter = "文本文件(*.txt)|*.txt"
         '
+        'Dialog_Font
+        '
+        Me.Dialog_Font.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        '
         'NotePad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -295,4 +300,5 @@ Partial Class NotePad
     Friend WithEvents TB_Editor As TextBox
     Friend WithEvents Dialog_SaveFile As SaveFileDialog
     Friend WithEvents Dialog_OpenFile As OpenFileDialog
+    Friend WithEvents Dialog_Font As FontDialog
 End Class
