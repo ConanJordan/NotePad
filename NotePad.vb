@@ -16,7 +16,7 @@ Public Class NotePad
     Private Sub MI_Save_Click(sender As Object, e As EventArgs) Handles MI_Save.Click
 
         If Me.filePath = Nothing Then  ' 当前文件未被保存
-            MI_SaveAs_Click(sender, e)  ' 调用【另存为】按钮
+            MI_SaveAs_Click(sender, e)  ' 调用【另存为】按键
         Else
             Me.fileNumber = FreeFile()  ' 获取文件号码
             FileOpen(Me.fileNumber, filePath, OpenMode.Output)  ' 以写入模式打开文件
@@ -39,7 +39,7 @@ Public Class NotePad
     Private Sub MI_Open_Click(sender As Object, e As EventArgs) Handles MI_Open.Click
         Dim buff As String
 
-        If Dialog_OpenFile.ShowDialog() = DialogResult.OK Then  ' 点击文件打开对话框的【打开】按钮
+        If Dialog_OpenFile.ShowDialog() = DialogResult.OK Then  ' 点击文件打开对话框的【打开】按键
             Me.filePath = Dialog_OpenFile.FileName  ' 获取文件路径
         Else
             Exit Sub
@@ -69,7 +69,7 @@ Public Class NotePad
 
     ' 另存为
     Private Sub MI_SaveAs_Click(sender As Object, e As EventArgs) Handles MI_SaveAs.Click
-        If Dialog_SaveFile.ShowDialog() = DialogResult.OK Then  ' 点击文件保存对话框的【保存】按钮
+        If Dialog_SaveFile.ShowDialog() = DialogResult.OK Then  ' 点击文件保存对话框的【保存】按键
             Me.filePath = Dialog_SaveFile.FileName  ' 获取文件路径
         Else
             Exit Sub
@@ -102,11 +102,38 @@ Public Class NotePad
     ' 窗口关闭事件
     Private Sub NotePad_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.FormClosing
         If Me.isEdited Then  ' 文件内容有变更的话
-            MessageBox.Show("文件内容有变更。")
-            e.Cancel = True  ' 取消窗口关闭的进程
-        Else
-            Application.Exit()  ' 关闭窗口，程序结束
+            Dim selectResult As Integer  ' 选择框的选择结果
+            If Me.filePath = Nothing Then  ' 文件不存在的话
+                selectResult = MessageBox.Show(
+                    "你需要保存文件吗？", "记事本", MessageBoxButtons.YesNoCancel)  ' 获取选择框的选择结果
+                If selectResult = DialogResult.Yes Then  ' 选择【是】
+                    MI_SaveAs_Click(sender, e)  ' 调用【另存为】按键
+                    Application.Exit()  ' 关闭窗口，程序结束
+                ElseIf selectResult = DialogResult.No Then  '选择【否】
+                    Application.Exit()  ' 关闭窗口，程序结束
+                ElseIf selectResult = DialogResult.Cancel Then  '选择【取消】
+                    Exit Sub  ' 关闭对话框，回到主窗口
+                End If
+            Else  ' 文件存在的话
+                selectResult = MessageBox.Show(
+                    "你需要保存文件到" & vbCrLf &
+                    Me.filePath & vbCrLf &
+                    "吗？",
+                    "记事本",
+                    MessageBoxButtons.YesNoCancel)  ' 获取选择框的选择结果
+                If selectResult = DialogResult.Yes Then  ' 选择【是】
+                    MI_Save_Click(sender, e)  ' 调用【保存】按键
+                    Application.Exit()  ' 关闭窗口，程序结束
+                ElseIf selectResult = DialogResult.No Then  ' 选择【否】
+                    Application.Exit()  ' 关闭窗口，程序结束
+                ElseIf selectResult = DialogResult.Cancel Then  ' 选择【取消】
+                    Exit Sub  ' 关闭对话框，回到主窗口
+                End If
+            End If
         End If
+
+        ' 文件内容没有变更
+        Application.Exit()  ' 关闭窗口，程序结束
     End Sub
 
     ' 文本框内容改变事件
@@ -161,7 +188,7 @@ Public Class NotePad
 
     ' 自动换行
     Private Sub MI_AutoWrapped_Click(sender As Object, e As EventArgs) Handles MI_AutoWrapped.Click
-        MI_AutoWrapped.Checked = Not MI_AutoWrapped.Checked  ' 设置【自动换行】按钮的选中标识
+        MI_AutoWrapped.Checked = Not MI_AutoWrapped.Checked  ' 设置【自动换行】按键的选中标识
         TB_Editor.WordWrap = MI_AutoWrapped.Checked  ' 设置文本框的【文字换行】属性
     End Sub
 
