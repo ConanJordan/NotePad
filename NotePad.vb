@@ -171,4 +171,34 @@ Public Class NotePad
             TB_Editor.Font = Dialog_Font.Font
         End If
     End Sub
+
+    ' 缩放：放大
+    Private Sub MI_ZoomUp_Click(sender As Object, e As EventArgs) Handles MI_ZoomUp.Click
+        Dim font As Font = New Font(
+            TB_Editor.Font.Name,
+            TB_Editor.Font.Size + 1,  ' 字体放大一号
+            TB_Editor.Font.Style,
+            TB_Editor.Font.Unit,
+            TB_Editor.Font.GdiCharSet
+        )
+        TB_Editor.Font = font  ' 设置新字体
+    End Sub
+
+    ' 缩放：缩小
+    Private Sub MI_ZoomDown_Click(sender As Object, e As EventArgs) Handles MI_ZoomDown.Click
+        Dim font As Font = New Font(
+            TB_Editor.Font.Name,
+            IIf(TB_Editor.Font.Size - 1 > 0.0!, TB_Editor.Font.Size - 1, TB_Editor.Font.Size),  ' 字体缩小一号
+            TB_Editor.Font.Style,
+            TB_Editor.Font.Unit,
+            TB_Editor.Font.GdiCharSet
+        )
+        TB_Editor.Font = font  ' 设置新字体
+    End Sub
+
+    ' 缩放：恢复默认缩放
+    Private Sub MI_ZoomDefault_Click(sender As Object, e As EventArgs) Handles MI_ZoomDefault.Click
+        ' 默认的缩放大小保存在字体对话框中，所以从那么读取
+        TB_Editor.Font = Dialog_Font.Font
+    End Sub
 End Class

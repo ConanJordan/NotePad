@@ -44,6 +44,9 @@ Partial Class NotePad
         Me.MI_Font = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_View = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Zoom = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_ZoomUp = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_ZoomDown = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_ZoomDefault = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Status = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_AboutNotePad = New System.Windows.Forms.ToolStripMenuItem()
@@ -188,13 +191,13 @@ Partial Class NotePad
         Me.MI_AutoWrapped.Checked = True
         Me.MI_AutoWrapped.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MI_AutoWrapped.Name = "MI_AutoWrapped"
-        Me.MI_AutoWrapped.Size = New System.Drawing.Size(180, 24)
+        Me.MI_AutoWrapped.Size = New System.Drawing.Size(158, 24)
         Me.MI_AutoWrapped.Text = "自动换行(&W)"
         '
         'MI_Font
         '
         Me.MI_Font.Name = "MI_Font"
-        Me.MI_Font.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Font.Size = New System.Drawing.Size(158, 24)
         Me.MI_Font.Text = "字体(&F)"
         '
         'Menu_View
@@ -206,14 +209,36 @@ Partial Class NotePad
         '
         'MI_Zoom
         '
+        Me.MI_Zoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_ZoomUp, Me.MI_ZoomDown, Me.MI_ZoomDefault})
         Me.MI_Zoom.Name = "MI_Zoom"
-        Me.MI_Zoom.Size = New System.Drawing.Size(138, 24)
+        Me.MI_Zoom.Size = New System.Drawing.Size(180, 24)
         Me.MI_Zoom.Text = "缩放(&Z)"
+        '
+        'MI_ZoomUp
+        '
+        Me.MI_ZoomUp.Name = "MI_ZoomUp"
+        Me.MI_ZoomUp.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Up), System.Windows.Forms.Keys)
+        Me.MI_ZoomUp.Size = New System.Drawing.Size(209, 24)
+        Me.MI_ZoomUp.Text = "放大(&I)"
+        '
+        'MI_ZoomDown
+        '
+        Me.MI_ZoomDown.Name = "MI_ZoomDown"
+        Me.MI_ZoomDown.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Down), System.Windows.Forms.Keys)
+        Me.MI_ZoomDown.Size = New System.Drawing.Size(209, 24)
+        Me.MI_ZoomDown.Text = "缩小(&O)"
+        '
+        'MI_ZoomDefault
+        '
+        Me.MI_ZoomDefault.Name = "MI_ZoomDefault"
+        Me.MI_ZoomDefault.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D0), System.Windows.Forms.Keys)
+        Me.MI_ZoomDefault.Size = New System.Drawing.Size(212, 24)
+        Me.MI_ZoomDefault.Text = "恢复默认缩放"
         '
         'MI_Status
         '
         Me.MI_Status.Name = "MI_Status"
-        Me.MI_Status.Size = New System.Drawing.Size(138, 24)
+        Me.MI_Status.Size = New System.Drawing.Size(180, 24)
         Me.MI_Status.Text = "状态栏(&S)"
         '
         'Menu_Help
@@ -301,4 +326,7 @@ Partial Class NotePad
     Friend WithEvents Dialog_SaveFile As SaveFileDialog
     Friend WithEvents Dialog_OpenFile As OpenFileDialog
     Friend WithEvents Dialog_Font As FontDialog
+    Friend WithEvents MI_ZoomUp As ToolStripMenuItem
+    Friend WithEvents MI_ZoomDown As ToolStripMenuItem
+    Friend WithEvents MI_ZoomDefault As ToolStripMenuItem
 End Class
