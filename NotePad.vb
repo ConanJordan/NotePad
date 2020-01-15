@@ -155,7 +155,7 @@ Public Class NotePad
     End Sub
 
     ' 撤销
-    Private Sub MI_Revert_Click(sender As Object, e As EventArgs) Handles MI_Revert.Click
+    Private Sub MI_Undo_Click(sender As Object, e As EventArgs) Handles MI_Undo.Click
         TB_Editor.Undo()
     End Sub
 
@@ -209,5 +209,39 @@ Public Class NotePad
             "@Author 李敦煌",
             "记事本",
             MessageBoxButtons.OK)
+    End Sub
+
+    Private Sub CMS_PopupMenu_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles CMS_PopupMenu.Opening
+
+    End Sub
+
+    ' 上下文目录【撤销】
+    Private Sub PMenu_Undo_Click(sender As Object, e As EventArgs) Handles PMenu_Undo.Click
+        MI_Undo_Click(sender, e)
+    End Sub
+
+    ' 上下文目录【剪切】
+    Private Sub PMenu_Cut_Click(sender As Object, e As EventArgs) Handles PMenu_Cut.Click
+        MI_Cut_Click(sender, e)
+    End Sub
+
+    ' 上下文目录【复制】
+    Private Sub PMenu_Copy_Click(sender As Object, e As EventArgs) Handles PMenu_Copy.Click
+        MI_Copy_Click(sender, e)
+    End Sub
+
+    ' 上下文目录【粘贴】
+    Private Sub PMenu_Paste_Click(sender As Object, e As EventArgs) Handles PMenu_Paste.Click
+        MI_Paste_Click(sender, e)
+    End Sub
+
+    ' 上下文目录【删除】
+    Private Sub PMenu_Delete_Click(sender As Object, e As EventArgs) Handles PMenu_Delete.Click
+        MI_Delete_Click(sender, e)
+    End Sub
+
+    ' 上下文目录【全选】
+    Private Sub PMenu_SelectAll_Click(sender As Object, e As EventArgs) Handles PMenu_SelectAll.Click
+        MI_SelectAll_Click(sender, e)
     End Sub
 End Class

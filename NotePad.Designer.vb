@@ -22,6 +22,7 @@ Partial Class NotePad
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Menu1 = New System.Windows.Forms.MenuStrip()
         Me.Menu_File = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Create = New System.Windows.Forms.ToolStripMenuItem()
@@ -30,7 +31,7 @@ Partial Class NotePad
         Me.MI_SaveAs = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Edit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MI_Revert = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Undo = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Cut = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Copy = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_Paste = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,10 +51,20 @@ Partial Class NotePad
         Me.Menu_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.MI_AboutNotePad = New System.Windows.Forms.ToolStripMenuItem()
         Me.TB_Editor = New System.Windows.Forms.TextBox()
+        Me.CMS_PopupMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.PMenu_Undo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Cut = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Copy = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Paste = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Delete = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Find = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_Replace = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PMenu_SelectAll = New System.Windows.Forms.ToolStripMenuItem()
         Me.Dialog_SaveFile = New System.Windows.Forms.SaveFileDialog()
         Me.Dialog_OpenFile = New System.Windows.Forms.OpenFileDialog()
         Me.Dialog_Font = New System.Windows.Forms.FontDialog()
         Me.Menu1.SuspendLayout()
+        Me.CMS_PopupMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'Menu1
@@ -110,17 +121,17 @@ Partial Class NotePad
         '
         'Menu_Edit
         '
-        Me.Menu_Edit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Revert, Me.MI_Cut, Me.MI_Copy, Me.MI_Paste, Me.MI_Delete, Me.MI_Find, Me.MI_Replace, Me.MI_SelectAll, Me.MI_Now})
+        Me.Menu_Edit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Undo, Me.MI_Cut, Me.MI_Copy, Me.MI_Paste, Me.MI_Delete, Me.MI_Find, Me.MI_Replace, Me.MI_SelectAll, Me.MI_Now})
         Me.Menu_Edit.Name = "Menu_Edit"
         Me.Menu_Edit.Size = New System.Drawing.Size(67, 24)
         Me.Menu_Edit.Text = "编辑(&E)"
         '
-        'MI_Revert
+        'MI_Undo
         '
-        Me.MI_Revert.Name = "MI_Revert"
-        Me.MI_Revert.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.MI_Revert.Size = New System.Drawing.Size(185, 24)
-        Me.MI_Revert.Text = "撤销(&U)"
+        Me.MI_Undo.Name = "MI_Undo"
+        Me.MI_Undo.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
+        Me.MI_Undo.Size = New System.Drawing.Size(185, 24)
+        Me.MI_Undo.Text = "撤销(&U)"
         '
         'MI_Cut
         '
@@ -190,13 +201,13 @@ Partial Class NotePad
         Me.MI_AutoWrapped.Checked = True
         Me.MI_AutoWrapped.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MI_AutoWrapped.Name = "MI_AutoWrapped"
-        Me.MI_AutoWrapped.Size = New System.Drawing.Size(180, 24)
+        Me.MI_AutoWrapped.Size = New System.Drawing.Size(158, 24)
         Me.MI_AutoWrapped.Text = "自动换行(&W)"
         '
         'MI_Font
         '
         Me.MI_Font.Name = "MI_Font"
-        Me.MI_Font.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Font.Size = New System.Drawing.Size(158, 24)
         Me.MI_Font.Text = "字体(&F)"
         '
         'Menu_View
@@ -210,7 +221,7 @@ Partial Class NotePad
         '
         Me.MI_Zoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_ZoomUp, Me.MI_ZoomDown, Me.MI_ZoomDefault})
         Me.MI_Zoom.Name = "MI_Zoom"
-        Me.MI_Zoom.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Zoom.Size = New System.Drawing.Size(125, 24)
         Me.MI_Zoom.Text = "缩放(&Z)"
         '
         'MI_ZoomUp
@@ -244,13 +255,14 @@ Partial Class NotePad
         'MI_AboutNotePad
         '
         Me.MI_AboutNotePad.Name = "MI_AboutNotePad"
-        Me.MI_AboutNotePad.Size = New System.Drawing.Size(180, 24)
+        Me.MI_AboutNotePad.Size = New System.Drawing.Size(168, 24)
         Me.MI_AboutNotePad.Text = "关于记事本(&A)"
         '
         'TB_Editor
         '
         Me.TB_Editor.AcceptsReturn = True
         Me.TB_Editor.AcceptsTab = True
+        Me.TB_Editor.ContextMenuStrip = Me.CMS_PopupMenu
         Me.TB_Editor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TB_Editor.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TB_Editor.Location = New System.Drawing.Point(0, 28)
@@ -258,6 +270,60 @@ Partial Class NotePad
         Me.TB_Editor.Name = "TB_Editor"
         Me.TB_Editor.Size = New System.Drawing.Size(800, 422)
         Me.TB_Editor.TabIndex = 1
+        '
+        'CMS_PopupMenu
+        '
+        Me.CMS_PopupMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PMenu_Undo, Me.PMenu_Cut, Me.PMenu_Copy, Me.PMenu_Paste, Me.PMenu_Delete, Me.PMenu_Find, Me.PMenu_Replace, Me.PMenu_SelectAll})
+        Me.CMS_PopupMenu.Name = "CMS_PopupMenu"
+        Me.CMS_PopupMenu.Size = New System.Drawing.Size(126, 180)
+        '
+        'PMenu_Undo
+        '
+        Me.PMenu_Undo.Name = "PMenu_Undo"
+        Me.PMenu_Undo.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Undo.Text = "撤销(&U）"
+        '
+        'PMenu_Cut
+        '
+        Me.PMenu_Cut.Name = "PMenu_Cut"
+        Me.PMenu_Cut.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Cut.Text = "剪切(&T)"
+        '
+        'PMenu_Copy
+        '
+        Me.PMenu_Copy.Name = "PMenu_Copy"
+        Me.PMenu_Copy.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Copy.Text = "复制(&C)"
+        '
+        'PMenu_Paste
+        '
+        Me.PMenu_Paste.Name = "PMenu_Paste"
+        Me.PMenu_Paste.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Paste.Text = "粘贴(&T)"
+        '
+        'PMenu_Delete
+        '
+        Me.PMenu_Delete.Name = "PMenu_Delete"
+        Me.PMenu_Delete.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Delete.Text = "删除(&D)"
+        '
+        'PMenu_Find
+        '
+        Me.PMenu_Find.Name = "PMenu_Find"
+        Me.PMenu_Find.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Find.Text = "查找(&F)"
+        '
+        'PMenu_Replace
+        '
+        Me.PMenu_Replace.Name = "PMenu_Replace"
+        Me.PMenu_Replace.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_Replace.Text = "替换(&R)"
+        '
+        'PMenu_SelectAll
+        '
+        Me.PMenu_SelectAll.Name = "PMenu_SelectAll"
+        Me.PMenu_SelectAll.Size = New System.Drawing.Size(125, 22)
+        Me.PMenu_SelectAll.Text = "全选(&A)"
         '
         'Dialog_SaveFile
         '
@@ -285,6 +351,7 @@ Partial Class NotePad
         Me.Text = "记事本"
         Me.Menu1.ResumeLayout(False)
         Me.Menu1.PerformLayout()
+        Me.CMS_PopupMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -301,7 +368,7 @@ Partial Class NotePad
     Friend WithEvents MI_Save As ToolStripMenuItem
     Friend WithEvents MI_SaveAs As ToolStripMenuItem
     Friend WithEvents MI_Exit As ToolStripMenuItem
-    Friend WithEvents MI_Revert As ToolStripMenuItem
+    Friend WithEvents MI_Undo As ToolStripMenuItem
     Friend WithEvents MI_Cut As ToolStripMenuItem
     Friend WithEvents MI_Copy As ToolStripMenuItem
     Friend WithEvents MI_Paste As ToolStripMenuItem
@@ -321,4 +388,13 @@ Partial Class NotePad
     Friend WithEvents MI_ZoomUp As ToolStripMenuItem
     Friend WithEvents MI_ZoomDown As ToolStripMenuItem
     Friend WithEvents MI_ZoomDefault As ToolStripMenuItem
+    Friend WithEvents CMS_PopupMenu As ContextMenuStrip
+    Friend WithEvents PMenu_Undo As ToolStripMenuItem
+    Friend WithEvents PMenu_Cut As ToolStripMenuItem
+    Friend WithEvents PMenu_Copy As ToolStripMenuItem
+    Friend WithEvents PMenu_Paste As ToolStripMenuItem
+    Friend WithEvents PMenu_Delete As ToolStripMenuItem
+    Friend WithEvents PMenu_Find As ToolStripMenuItem
+    Friend WithEvents PMenu_Replace As ToolStripMenuItem
+    Friend WithEvents PMenu_SelectAll As ToolStripMenuItem
 End Class
