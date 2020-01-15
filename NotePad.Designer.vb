@@ -184,8 +184,10 @@ Partial Class NotePad
         '
         'MI_AutoWrapped
         '
+        Me.MI_AutoWrapped.Checked = True
+        Me.MI_AutoWrapped.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MI_AutoWrapped.Name = "MI_AutoWrapped"
-        Me.MI_AutoWrapped.Size = New System.Drawing.Size(158, 24)
+        Me.MI_AutoWrapped.Size = New System.Drawing.Size(180, 24)
         Me.MI_AutoWrapped.Text = "自动换行(&W)"
         '
         'MI_Font

@@ -159,4 +159,9 @@ Public Class NotePad
         TB_Editor.Undo()
     End Sub
 
+    ' 自动换行
+    Private Sub MI_AutoWrapped_Click(sender As Object, e As EventArgs) Handles MI_AutoWrapped.Click
+        MI_AutoWrapped.Checked = Not MI_AutoWrapped.Checked  ' 设置【自动换行】按钮的选中标识
+        TB_Editor.WordWrap = MI_AutoWrapped.Checked  ' 设置文本框的【文字换行】属性
+    End Sub
 End Class
