@@ -73,25 +73,30 @@ Partial Class NotePad
         'MI_Create
         '
         Me.MI_Create.Name = "MI_Create"
+        Me.MI_Create.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
         Me.MI_Create.Size = New System.Drawing.Size(180, 24)
         Me.MI_Create.Text = "新建(&N)"
         '
         'MI_Open
         '
         Me.MI_Open.Name = "MI_Open"
+        Me.MI_Open.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.MI_Open.Size = New System.Drawing.Size(180, 24)
         Me.MI_Open.Text = "打开(&O)"
         '
         'MI_Save
         '
         Me.MI_Save.Name = "MI_Save"
+        Me.MI_Save.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.MI_Save.Size = New System.Drawing.Size(180, 24)
         Me.MI_Save.Text = "保存(&S)"
         '
         'MI_SaveAs
         '
         Me.MI_SaveAs.Name = "MI_SaveAs"
-        Me.MI_SaveAs.Size = New System.Drawing.Size(180, 24)
+        Me.MI_SaveAs.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.MI_SaveAs.Size = New System.Drawing.Size(240, 24)
         Me.MI_SaveAs.Text = "另存为（&A)"
         '
         'MI_Exit
