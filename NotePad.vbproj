@@ -95,12 +95,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SaveDialogConfirm.Designer.vb">
-      <DependentUpon>SaveDialogConfirm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SaveDialogConfirm.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NotePad.resx">
@@ -111,9 +105,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaveDialogConfirm.resx">
-      <DependentUpon>SaveDialogConfirm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

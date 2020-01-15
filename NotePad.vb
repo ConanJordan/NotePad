@@ -108,10 +108,11 @@ Public Class NotePad
                     "你需要保存文件吗？", "记事本", MessageBoxButtons.YesNoCancel)  ' 获取选择框的选择结果
                 If selectResult = DialogResult.Yes Then  ' 选择【是】
                     MI_SaveAs_Click(sender, e)  ' 调用【另存为】按键
-                    Application.Exit()  ' 关闭窗口，程序结束
+                    ' 关闭窗口，程序结束
                 ElseIf selectResult = DialogResult.No Then  '选择【否】
-                    Application.Exit()  ' 关闭窗口，程序结束
+                    ' 关闭窗口，程序结束
                 ElseIf selectResult = DialogResult.Cancel Then  '选择【取消】
+                    e.Cancel = True  ' 结束关闭主窗口的进程
                     Exit Sub  ' 关闭对话框，回到主窗口
                 End If
             Else  ' 文件存在的话
@@ -123,17 +124,18 @@ Public Class NotePad
                     MessageBoxButtons.YesNoCancel)  ' 获取选择框的选择结果
                 If selectResult = DialogResult.Yes Then  ' 选择【是】
                     MI_Save_Click(sender, e)  ' 调用【保存】按键
-                    Application.Exit()  ' 关闭窗口，程序结束
+                    ' 关闭窗口，程序结束
                 ElseIf selectResult = DialogResult.No Then  ' 选择【否】
-                    Application.Exit()  ' 关闭窗口，程序结束
+                    ' 关闭窗口，程序结束
                 ElseIf selectResult = DialogResult.Cancel Then  ' 选择【取消】
+                    e.Cancel = True  ' 结束关闭主窗口的进程
                     Exit Sub  ' 关闭对话框，回到主窗口
                 End If
             End If
         End If
 
         ' 文件内容没有变更
-        Application.Exit()  ' 关闭窗口，程序结束
+        ' 关闭窗口，程序结束
     End Sub
 
     ' 文本框内容改变事件
