@@ -26,7 +26,7 @@ Partial Class FindDialog
         Me.TB_FindContent = New System.Windows.Forms.TextBox()
         Me.BTN_Next = New System.Windows.Forms.Button()
         Me.BTN_Cancel = New System.Windows.Forms.Button()
-        Me.CB_IsCap = New System.Windows.Forms.CheckBox()
+        Me.CB_IsCaseSensitive = New System.Windows.Forms.CheckBox()
         Me.CB_IsLoop = New System.Windows.Forms.CheckBox()
         Me.GB_Direction = New System.Windows.Forms.GroupBox()
         Me.RD_Down = New System.Windows.Forms.RadioButton()
@@ -73,16 +73,16 @@ Partial Class FindDialog
         Me.BTN_Cancel.Text = "取消"
         Me.BTN_Cancel.UseVisualStyleBackColor = True
         '
-        'CB_IsCap
+        'CB_IsCaseSensitive
         '
-        Me.CB_IsCap.AutoSize = True
-        Me.CB_IsCap.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CB_IsCap.Location = New System.Drawing.Point(16, 86)
-        Me.CB_IsCap.Name = "CB_IsCap"
-        Me.CB_IsCap.Size = New System.Drawing.Size(112, 17)
-        Me.CB_IsCap.TabIndex = 4
-        Me.CB_IsCap.Text = "区分大小写(&C)"
-        Me.CB_IsCap.UseVisualStyleBackColor = True
+        Me.CB_IsCaseSensitive.AutoSize = True
+        Me.CB_IsCaseSensitive.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CB_IsCaseSensitive.Location = New System.Drawing.Point(16, 86)
+        Me.CB_IsCaseSensitive.Name = "CB_IsCaseSensitive"
+        Me.CB_IsCaseSensitive.Size = New System.Drawing.Size(112, 17)
+        Me.CB_IsCaseSensitive.TabIndex = 4
+        Me.CB_IsCaseSensitive.Text = "区分大小写(&C)"
+        Me.CB_IsCaseSensitive.UseVisualStyleBackColor = True
         '
         'CB_IsLoop
         '
@@ -109,6 +109,7 @@ Partial Class FindDialog
         'RD_Down
         '
         Me.RD_Down.AutoSize = True
+        Me.RD_Down.Checked = True
         Me.RD_Down.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RD_Down.Location = New System.Drawing.Point(106, 20)
         Me.RD_Down.Name = "RD_Down"
@@ -126,7 +127,6 @@ Partial Class FindDialog
         Me.RD_Up.Name = "RD_Up"
         Me.RD_Up.Size = New System.Drawing.Size(72, 17)
         Me.RD_Up.TabIndex = 0
-        Me.RD_Up.TabStop = True
         Me.RD_Up.Text = "向上(&U)"
         Me.RD_Up.UseVisualStyleBackColor = True
         '
@@ -137,7 +137,7 @@ Partial Class FindDialog
         Me.ClientSize = New System.Drawing.Size(434, 161)
         Me.Controls.Add(Me.GB_Direction)
         Me.Controls.Add(Me.CB_IsLoop)
-        Me.Controls.Add(Me.CB_IsCap)
+        Me.Controls.Add(Me.CB_IsCaseSensitive)
         Me.Controls.Add(Me.BTN_Cancel)
         Me.Controls.Add(Me.BTN_Next)
         Me.Controls.Add(Me.TB_FindContent)
@@ -159,7 +159,7 @@ Partial Class FindDialog
     Friend WithEvents TB_FindContent As TextBox
     Friend WithEvents BTN_Next As Button
     Friend WithEvents BTN_Cancel As Button
-    Friend WithEvents CB_IsCap As CheckBox
+    Friend WithEvents CB_IsCaseSensitive As CheckBox
     Friend WithEvents CB_IsLoop As CheckBox
     Friend WithEvents GB_Direction As GroupBox
     Friend WithEvents RD_Up As RadioButton
