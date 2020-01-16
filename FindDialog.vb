@@ -16,7 +16,7 @@
 
     ' 查找下一个
     Private Sub BTN_Next_Click(sender As Object, e As EventArgs) Handles BTN_Next.Click
-
+        Find(CB_IsCaseSensitive.Checked, CB_IsLoop.Checked, RD_Up.Checked)
     End Sub
 
     ' 取消
@@ -36,7 +36,35 @@
         isLoop As Boolean,  ' 循环
         isUp As Boolean  ' 向上
         )
-
+        If isCaseSensitive Then  ' 区分大小写
+            If isLoop Then  ' 循环
+                If isUp Then  ' 向上查询
+                    Find_CaseLoopUp()
+                Else  ' 向下查询
+                    Find_CaseLoopDown()
+                End If
+            Else  ' 不循环
+                If isUp Then  ' 向上查询
+                    Find_CaseNotLoopUp()
+                Else  ' 向下查询
+                    Find_CaseNotLoopDown()
+                End If
+            End If
+        Else  ' 不区分大小写
+            If isLoop Then  ' 循环
+                If isUp Then  ' 向上查询
+                    Find_NotCaseLoopUp()
+                Else  ' 向下查询
+                    Find_NotCaseLoopDown()
+                End If
+            Else  ' 不循环
+                If isUp Then  ' 向上查询
+                    Find_NotCaseNotLoopUp()
+                Else  ' 向下查询
+                    Find_NotCaseNotLoopDown()
+                End If
+            End If
+        End If
     End Sub
 
     ' 区分大小写，不循环，向下查找
