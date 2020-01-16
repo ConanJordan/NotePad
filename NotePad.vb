@@ -156,11 +156,16 @@ Public Class NotePad
         End If
     End Sub
 
-    ' 时间/日期
+    ' 日期/时间
     Private Sub MI_Now_Click(sender As Object, e As EventArgs) Handles MI_Now.Click
         Dim text As String = TB_Editor.Text
-        text = text.Substring(0, TB_Editor.SelectionStart) & Now & text.Substring(TB_Editor.SelectionStart)
+        Dim NowStr As String = Now.ToString
+        Dim newSelectionStart As Integer = TB_Editor.SelectionStart + NowStr.Length  ' 获取新的光标位置
+        text = text.Substring(0, TB_Editor.SelectionStart) & NowStr & text.Substring(TB_Editor.SelectionStart + TB_Editor.SelectionLength)
         TB_Editor.Text = text
+
+        ' 设置新的光标位置
+        TB_Editor.SelectionStart = newSelectionStart
     End Sub
 
     ' 剪切
