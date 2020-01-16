@@ -73,7 +73,7 @@ Partial Class NotePad
         Me.Menu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_File, Me.Menu_Edit, Me.Menu_Format, Me.Menu_View, Me.Menu_Help})
         Me.Menu1.Location = New System.Drawing.Point(0, 0)
         Me.Menu1.Name = "Menu1"
-        Me.Menu1.Size = New System.Drawing.Size(800, 28)
+        Me.Menu1.Size = New System.Drawing.Size(784, 28)
         Me.Menu1.TabIndex = 0
         Me.Menu1.Text = "MenuStrip1"
         '
@@ -268,7 +268,7 @@ Partial Class NotePad
         Me.TB_Editor.Location = New System.Drawing.Point(0, 28)
         Me.TB_Editor.Multiline = True
         Me.TB_Editor.Name = "TB_Editor"
-        Me.TB_Editor.Size = New System.Drawing.Size(800, 422)
+        Me.TB_Editor.Size = New System.Drawing.Size(784, 433)
         Me.TB_Editor.TabIndex = 1
         '
         'CMS_PopupMenu
@@ -343,7 +343,7 @@ Partial Class NotePad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(784, 461)
         Me.Controls.Add(Me.TB_Editor)
         Me.Controls.Add(Me.Menu1)
         Me.MainMenuStrip = Me.Menu1
