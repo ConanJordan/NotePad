@@ -103,22 +103,94 @@
 
     ' 区分大小写，循环，向下查找
     Private Sub Find_CaseLoopDown()
+        Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取主窗体文本
+        Me.FindContent = TB_FindContent.Text  ' 获取要查找的对象文本
 
+        Me.StartIndex = Me.MainPad.TB_Editor.SelectionStart + Me.MainPad.TB_Editor.SelectionLength  ' 获取查找的起始下标
+        Me.MainContent = Me.MainContent.Substring(Me.StartIndex)  ' 获取查找源文本
+        Me.TargetIndex = Me.MainContent.IndexOf(Me.FindContent)  ' 获取查找到的目标下标
+
+        If Me.TargetIndex < 0 Then  ' 没查找到
+            ' 从开头开始循环查找
+            Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取查找源文本
+            Me.TargetIndex = Me.MainContent.IndexOf(Me.FindContent)  ' 获取查找到的目标下标
+            If Me.TargetIndex < 0 Then  ' 没查找到
+                MessageBox.Show("找不到" & Chr(34) & Me.FindContent & Chr(34))
+            Else  ' 查找到了
+                SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+            End If
+        Else  ' 查找到了
+            SelectText(Me.StartIndex + Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+        End If
     End Sub
 
     ' 区分大小写，循环，向上查找
     Private Sub Find_CaseLoopUp()
+        Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取主窗体文本
+        Me.FindContent = TB_FindContent.Text  ' 获取要查找的对象文本
 
+        Me.StartIndex = Me.MainPad.TB_Editor.SelectionStart  ' 获取查找的起始下标
+        Me.MainContent = Me.MainContent.Substring(0, Me.StartIndex)  ' 获取查找源文本
+        Me.TargetIndex = Me.MainContent.LastIndexOf(Me.FindContent)  ' 获取查找到的目标下标
+
+        If Me.TargetIndex < 0 Then  ' 没查找到
+            ' 从末尾开始循环查找
+            Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取查找源文本
+            Me.TargetIndex = Me.MainContent.LastIndexOf(Me.FindContent)  ' 获取查找到的目标下标
+            If Me.TargetIndex < 0 Then  ' 
+                MessageBox.Show("找不到" & Chr(34) & Me.FindContent & Chr(34))
+            Else  ' 查找到了
+                SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+            End If
+        Else  ' 查找到了
+            SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+        End If
     End Sub
 
     ' 不区分大小写，循环，向下查找
     Private Sub Find_NotCaseLoopDown()
+        Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取主窗体文本
+        Me.FindContent = TB_FindContent.Text  ' 获取要查找的对象文本
 
+        Me.StartIndex = Me.MainPad.TB_Editor.SelectionStart + Me.MainPad.TB_Editor.SelectionLength  ' 获取查找的起始下标
+        Me.MainContent = Me.MainContent.Substring(Me.StartIndex)  ' 获取查找源文本
+        Me.TargetIndex = Me.MainContent.ToUpper.IndexOf(Me.FindContent.ToUpper)  ' 获取查找到的目标下标(不区分大小写，所以把文本全部转换成大写)
+
+        If Me.TargetIndex < 0 Then  ' 没查找到
+            ' 从开头开始循环查找
+            Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取查找源文本
+            Me.TargetIndex = Me.MainContent.ToUpper.IndexOf(Me.FindContent.ToUpper)  ' 获取查找到的目标下标
+            If Me.TargetIndex < 0 Then  ' 没查找到
+                MessageBox.Show("找不到" & Chr(34) & Me.FindContent & Chr(34))
+            Else  ' 查找到了
+                SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+            End If
+        Else  ' 查找到了
+            SelectText(Me.StartIndex + Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本(不区分大小写，所以把文本全部转换成大写)
+        End If
     End Sub
 
     ' 不区分大小写，循环，向上查找
     Private Sub Find_NotCaseLoopUp()
+        Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取主窗体文本
+        Me.FindContent = TB_FindContent.Text  ' 获取要查找的对象文本
 
+        Me.StartIndex = Me.MainPad.TB_Editor.SelectionStart  ' 获取查找的起始下标
+        Me.MainContent = Me.MainContent.Substring(0, Me.StartIndex)  ' 获取查找源文本
+        Me.TargetIndex = Me.MainContent.ToUpper.LastIndexOf(Me.FindContent.ToUpper)  ' 获取查找到的目标下标(不区分大小写，所以把文本全部转换成大写)
+
+        If Me.TargetIndex < 0 Then  ' 没查找到
+            ' 从末尾开始循环查找
+            Me.MainContent = Me.MainPad.TB_Editor.Text  ' 获取查找的起始下标
+            Me.TargetIndex = Me.MainContent.ToUpper.LastIndexOf(Me.FindContent.ToUpper)  ' 获取查找到的目标下标(不区分大小写，所以把文本全部转换成大写)
+            If Me.TargetIndex < 0 Then  ' 
+                MessageBox.Show("找不到" & Chr(34) & Me.FindContent & Chr(34))
+            Else  ' 查找到了
+                SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+            End If
+        Else  ' 查找到了
+            SelectText(Me.TargetIndex, Me.FindContent.Length)  ' 选中查找到的文本
+        End If
     End Sub
 
     ' 选中文本
