@@ -156,8 +156,11 @@ Public Class NotePad
         End If
     End Sub
 
+    ' 时间/日期
     Private Sub MI_Now_Click(sender As Object, e As EventArgs) Handles MI_Now.Click
-
+        Dim text As String = TB_Editor.Text
+        text = text.Substring(0, TB_Editor.SelectionStart) & Now & text.Substring(TB_Editor.SelectionStart)
+        TB_Editor.Text = text
     End Sub
 
     ' 剪切
