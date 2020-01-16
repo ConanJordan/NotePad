@@ -265,6 +265,7 @@ Partial Class NotePad
         Me.TB_Editor.ContextMenuStrip = Me.CMS_PopupMenu
         Me.TB_Editor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TB_Editor.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TB_Editor.HideSelection = False
         Me.TB_Editor.Location = New System.Drawing.Point(0, 28)
         Me.TB_Editor.Multiline = True
         Me.TB_Editor.Name = "TB_Editor"
