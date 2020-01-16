@@ -20,145 +20,148 @@ Partial Class FindDialog
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox1.SuspendLayout()
+    <System.Diagnostics.DebuggerStepThrough()>
+    Public Sub InitializeComponent()
+        Me.LB_FindContent = New System.Windows.Forms.Label()
+        Me.TB_FindContent = New System.Windows.Forms.TextBox()
+        Me.BTN_Next = New System.Windows.Forms.Button()
+        Me.BTN_Cancel = New System.Windows.Forms.Button()
+        Me.CB_IsCap = New System.Windows.Forms.CheckBox()
+        Me.CB_IsLoop = New System.Windows.Forms.CheckBox()
+        Me.GB_Direction = New System.Windows.Forms.GroupBox()
+        Me.RD_Down = New System.Windows.Forms.RadioButton()
+        Me.RD_Up = New System.Windows.Forms.RadioButton()
+        Me.GB_Direction.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Label1
+        'LB_FindContent
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "查找内容(&N)："
+        Me.LB_FindContent.AutoSize = True
+        Me.LB_FindContent.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.LB_FindContent.Location = New System.Drawing.Point(1, 18)
+        Me.LB_FindContent.Name = "LB_FindContent"
+        Me.LB_FindContent.Size = New System.Drawing.Size(93, 13)
+        Me.LB_FindContent.TabIndex = 0
+        Me.LB_FindContent.Text = "查找内容(&N)："
         '
-        'TextBox1
+        'TB_FindContent
         '
-        Me.TextBox1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(88, 12)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(200, 22)
-        Me.TextBox1.TabIndex = 1
+        Me.TB_FindContent.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TB_FindContent.Location = New System.Drawing.Point(88, 12)
+        Me.TB_FindContent.Name = "TB_FindContent"
+        Me.TB_FindContent.Size = New System.Drawing.Size(200, 22)
+        Me.TB_FindContent.TabIndex = 1
         '
-        'Button1
+        'BTN_Next
         '
-        Me.Button1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(306, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(116, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "查找下一个(&F)"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTN_Next.Enabled = False
+        Me.BTN_Next.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BTN_Next.Location = New System.Drawing.Point(306, 12)
+        Me.BTN_Next.Name = "BTN_Next"
+        Me.BTN_Next.Size = New System.Drawing.Size(116, 23)
+        Me.BTN_Next.TabIndex = 2
+        Me.BTN_Next.Text = "查找下一个(&F)"
+        Me.BTN_Next.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BTN_Cancel
         '
-        Me.Button2.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button2.Location = New System.Drawing.Point(306, 51)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(116, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "取消"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BTN_Cancel.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BTN_Cancel.Location = New System.Drawing.Point(306, 51)
+        Me.BTN_Cancel.Name = "BTN_Cancel"
+        Me.BTN_Cancel.Size = New System.Drawing.Size(116, 23)
+        Me.BTN_Cancel.TabIndex = 3
+        Me.BTN_Cancel.Text = "取消"
+        Me.BTN_Cancel.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'CB_IsCap
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(16, 86)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(112, 17)
-        Me.CheckBox1.TabIndex = 4
-        Me.CheckBox1.Text = "区分大小写(&C)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CB_IsCap.AutoSize = True
+        Me.CB_IsCap.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CB_IsCap.Location = New System.Drawing.Point(16, 86)
+        Me.CB_IsCap.Name = "CB_IsCap"
+        Me.CB_IsCap.Size = New System.Drawing.Size(112, 17)
+        Me.CB_IsCap.TabIndex = 4
+        Me.CB_IsCap.Text = "区分大小写(&C)"
+        Me.CB_IsCap.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CB_IsLoop
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox2.Location = New System.Drawing.Point(16, 123)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(73, 17)
-        Me.CheckBox2.TabIndex = 5
-        Me.CheckBox2.Text = "循环(&R)"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CB_IsLoop.AutoSize = True
+        Me.CB_IsLoop.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CB_IsLoop.Location = New System.Drawing.Point(16, 123)
+        Me.CB_IsLoop.Name = "CB_IsLoop"
+        Me.CB_IsLoop.Size = New System.Drawing.Size(73, 17)
+        Me.CB_IsLoop.TabIndex = 5
+        Me.CB_IsLoop.Text = "循环(&R)"
+        Me.CB_IsLoop.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'GB_Direction
         '
-        Me.GroupBox1.Controls.Add(Me.RadioButton2)
-        Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(152, 86)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(211, 65)
-        Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "方向"
+        Me.GB_Direction.Controls.Add(Me.RD_Down)
+        Me.GB_Direction.Controls.Add(Me.RD_Up)
+        Me.GB_Direction.Location = New System.Drawing.Point(152, 86)
+        Me.GB_Direction.Name = "GB_Direction"
+        Me.GB_Direction.Size = New System.Drawing.Size(211, 65)
+        Me.GB_Direction.TabIndex = 6
+        Me.GB_Direction.TabStop = False
+        Me.GB_Direction.Text = "方向"
         '
-        'RadioButton1
+        'RD_Down
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(6, 20)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(72, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "向上(&U)"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RD_Down.AutoSize = True
+        Me.RD_Down.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RD_Down.Location = New System.Drawing.Point(106, 20)
+        Me.RD_Down.Name = "RD_Down"
+        Me.RD_Down.Size = New System.Drawing.Size(72, 17)
+        Me.RD_Down.TabIndex = 1
+        Me.RD_Down.TabStop = True
+        Me.RD_Down.Text = "向下(&D)"
+        Me.RD_Down.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'RD_Up
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RadioButton2.Location = New System.Drawing.Point(106, 20)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(72, 17)
-        Me.RadioButton2.TabIndex = 1
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "向下(&D)"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RD_Up.AutoSize = True
+        Me.RD_Up.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RD_Up.Location = New System.Drawing.Point(6, 20)
+        Me.RD_Up.Name = "RD_Up"
+        Me.RD_Up.Size = New System.Drawing.Size(72, 17)
+        Me.RD_Up.TabIndex = 0
+        Me.RD_Up.TabStop = True
+        Me.RD_Up.Text = "向上(&U)"
+        Me.RD_Up.UseVisualStyleBackColor = True
         '
         'FindDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(434, 161)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.CheckBox2)
-        Me.Controls.Add(Me.CheckBox1)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GB_Direction)
+        Me.Controls.Add(Me.CB_IsLoop)
+        Me.Controls.Add(Me.CB_IsCap)
+        Me.Controls.Add(Me.BTN_Cancel)
+        Me.Controls.Add(Me.BTN_Next)
+        Me.Controls.Add(Me.TB_FindContent)
+        Me.Controls.Add(Me.LB_FindContent)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FindDialog"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "查找"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GB_Direction.ResumeLayout(False)
+        Me.GB_Direction.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents LB_FindContent As Label
+    Friend WithEvents TB_FindContent As TextBox
+    Friend WithEvents BTN_Next As Button
+    Friend WithEvents BTN_Cancel As Button
+    Friend WithEvents CB_IsCap As CheckBox
+    Friend WithEvents CB_IsLoop As CheckBox
+    Friend WithEvents GB_Direction As GroupBox
+    Friend WithEvents RD_Up As RadioButton
+    Friend WithEvents RD_Down As RadioButton
 End Class

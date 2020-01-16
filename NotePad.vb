@@ -280,4 +280,11 @@ Public Class NotePad
     Private Sub PMenu_SelectAll_Click(sender As Object, e As EventArgs) Handles PMenu_SelectAll.Click
         MI_SelectAll_Click(sender, e)
     End Sub
+
+    ' 查找
+    Private Sub MI_Find_Click(sender As Object, e As EventArgs) Handles MI_Find.Click
+        Dim Dialog_Find As FindDialog = New FindDialog(Me)  ' 新建【查找】对话框
+        Dialog_Find.InitializeComponent()  ' 初始化【查找】对话框
+        Dialog_Find.Show()  ' 显示【查找】对话框
+    End Sub
 End Class
