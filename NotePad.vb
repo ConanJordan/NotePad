@@ -234,7 +234,7 @@ Public Class NotePad
 
     ' 缩放：恢复默认缩放
     Private Sub MI_ZoomDefault_Click(sender As Object, e As EventArgs) Handles MI_ZoomDefault.Click
-        ' 默认的缩放大小保存在字体对话框中，所以从那么读取
+        ' 默认的缩放大小保存在字体对话框中，所以从那里读取
         TB_Editor.Font = Dialog_Font.Font
     End Sub
 
