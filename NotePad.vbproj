@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindDialog.Designer.vb">
+      <DependentUpon>FindDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FindDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="NotePad.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FindDialog.resx">
+      <DependentUpon>FindDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NotePad.resx">
       <DependentUpon>NotePad.vb</DependentUpon>
     </EmbeddedResource>
