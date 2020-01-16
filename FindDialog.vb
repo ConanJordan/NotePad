@@ -101,6 +101,26 @@
         End If
     End Sub
 
+    ' 区分大小写，循环，向下查找
+    Private Sub Find_CaseLoopDown()
+
+    End Sub
+
+    ' 区分大小写，循环，向上查找
+    Private Sub Find_CaseLoopUp()
+
+    End Sub
+
+    ' 不区分大小写，循环，向下查找
+    Private Sub Find_NotCaseLoopDown()
+
+    End Sub
+
+    ' 不区分大小写，循环，向上查找
+    Private Sub Find_NotCaseLoopUp()
+
+    End Sub
+
     ' 选中文本
     Private Sub SelectText(start As Integer, length As Integer)
         Me.MainPad.TB_Editor.Select(start, length)
