@@ -171,7 +171,7 @@ Partial Class NotePad
         'MI_Replace
         '
         Me.MI_Replace.Name = "MI_Replace"
-        Me.MI_Replace.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.MI_Replace.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
         Me.MI_Replace.Size = New System.Drawing.Size(185, 24)
         Me.MI_Replace.Text = "替换(&R)"
         '
