@@ -72,6 +72,8 @@ Partial Class ReplaceDialog
         '
         'BTN_Next
         '
+        Me.BTN_Next.Enabled = False
+        Me.BTN_Next.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BTN_Next.Location = New System.Drawing.Point(364, 12)
         Me.BTN_Next.Name = "BTN_Next"
         Me.BTN_Next.Size = New System.Drawing.Size(108, 26)
@@ -81,6 +83,8 @@ Partial Class ReplaceDialog
         '
         'BTN_Replace
         '
+        Me.BTN_Replace.Enabled = False
+        Me.BTN_Replace.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BTN_Replace.Location = New System.Drawing.Point(364, 52)
         Me.BTN_Replace.Name = "BTN_Replace"
         Me.BTN_Replace.Size = New System.Drawing.Size(108, 26)
@@ -90,6 +94,8 @@ Partial Class ReplaceDialog
         '
         'BTN_ReplaceAll
         '
+        Me.BTN_ReplaceAll.Enabled = False
+        Me.BTN_ReplaceAll.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BTN_ReplaceAll.Location = New System.Drawing.Point(364, 92)
         Me.BTN_ReplaceAll.Name = "BTN_ReplaceAll"
         Me.BTN_ReplaceAll.Size = New System.Drawing.Size(108, 26)
@@ -99,6 +105,7 @@ Partial Class ReplaceDialog
         '
         'BTN_Cancel
         '
+        Me.BTN_Cancel.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.BTN_Cancel.Location = New System.Drawing.Point(364, 132)
         Me.BTN_Cancel.Name = "BTN_Cancel"
         Me.BTN_Cancel.Size = New System.Drawing.Size(108, 26)

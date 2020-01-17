@@ -135,4 +135,28 @@
     Private Sub BTN_Next_Click(sender As Object, e As EventArgs) Handles BTN_Next.Click
         Find(CB_IsCaseSensitive.Checked, CB_IsLoop.Checked)
     End Sub
+
+    ' 取消
+    Private Sub BTN_Cancel_Click(sender As Object, e As EventArgs) Handles BTN_Cancel.Click
+        Me.Close()
+    End Sub
+
+    ' 替换
+    Private Sub BTN_Replace_Click(sender As Object, e As EventArgs) Handles BTN_Replace.Click
+
+    End Sub
+
+    ' 【查找内容】文本框
+    Private Sub TB_FindContent_TextChanged(sender As Object, e As EventArgs) Handles TB_FindContent.TextChanged
+        If TB_FindContent.Text = Nothing Then  ' 【查找内容】文本框内容为空
+            BTN_Next.Enabled = False  ' 【查找下一个】不可用
+            BTN_Replace.Enabled = False  ' 【替换】不可用
+            BTN_ReplaceAll.Enabled = False  ' 【全部替换】不可用
+        Else
+            BTN_Next.Enabled = True  ' 【查找下一个】可用
+            BTN_Replace.Enabled = True  ' 【替换】可用
+            BTN_ReplaceAll.Enabled = True  ' 【全部替换】可用
+        End If
+    End Sub
+
 End Class
