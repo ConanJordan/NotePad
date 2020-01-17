@@ -1,9 +1,9 @@
 ﻿Public Class FindDialog
     Private MainPad As NotePad  ' 主窗体
-    Private MainContent As String  ' 主窗体的文本内容
-    Private FindContent As String  ' 要查询的文本内容
-    Private StartIndex As Integer   ' 开始查询的下标
-    Private TargetIndex As Integer  ' 查询到的下标
+    Private MainContent As String  ' 主窗体的文本内容(查找用)
+    Private FindContent As String  ' 要查找的文本内容
+    Private StartIndex As Integer   ' 开始查找的下标
+    Private TargetIndex As Integer  ' 查找到的下标
 
     Public Sub New(mainPad As NotePad)
         Me.MainPad = mainPad
@@ -38,29 +38,29 @@
         )
         If isCaseSensitive Then  ' 区分大小写
             If isLoop Then  ' 循环
-                If isUp Then  ' 向上查询
+                If isUp Then  ' 向上查找
                     Find_CaseLoopUp()
-                Else  ' 向下查询
+                Else  ' 向下查找
                     Find_CaseLoopDown()
                 End If
             Else  ' 不循环
-                If isUp Then  ' 向上查询
+                If isUp Then  ' 向上查找
                     Find_CaseNotLoopUp()
-                Else  ' 向下查询
+                Else  ' 向下查找
                     Find_CaseNotLoopDown()
                 End If
             End If
         Else  ' 不区分大小写
             If isLoop Then  ' 循环
-                If isUp Then  ' 向上查询
+                If isUp Then  ' 向上查找
                     Find_NotCaseLoopUp()
-                Else  ' 向下查询
+                Else  ' 向下查找
                     Find_NotCaseLoopDown()
                 End If
             Else  ' 不循环
-                If isUp Then  ' 向上查询
+                If isUp Then  ' 向上查找
                     Find_NotCaseNotLoopUp()
-                Else  ' 向下查询
+                Else  ' 向下查找
                     Find_NotCaseNotLoopDown()
                 End If
             End If
