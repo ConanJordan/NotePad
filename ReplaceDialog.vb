@@ -211,4 +211,49 @@
         End If
     End Sub
 
+    ' 全部替换
+    Private Sub BTN_ReplaceAll_Click(sender As Object, e As EventArgs) Handles BTN_ReplaceAll.Click
+        Dim replaceCount As Integer = 0  ' 记录替换的次数
+        Dim oldContent As String = ""  ' 旧的文本内容
+        Dim newContent As String = ""  ' 新的文本内容
+        Dim currentIndex As Integer  ' 当前下标
+        Dim isLoopable As Boolean = True  ' 可循环标识符
+
+        oldContent = Me.MainPad.TB_Editor.Text  ' 获取主窗体文本
+        Me.FindContent = TB_FindContent.Text  ' 获取查找文本
+        Me.ReplaceContent = TB_ReplaceContent.Text  ' 获取替换文本
+
+        If CB_IsCaseSensitive.Checked Then  ' 区分大小写
+            While currentIndex <= oldContent.Length And currentIndex + Me.FindContent.Length < oldContent.Length  ' 下标有效
+                If oldContent.Substring(currentIndex, Me.FindContent.Length) = Me.FindContent Then
+                    newContent &= Me.ReplaceContent  ' 编辑新的文本内容
+                    replaceCount += +1  ' 替换次数自增
+                    currentIndex += Me.FindContent.Length  ' 设置新的下标
+                Else
+                    newContent &= oldContent.Substring(currentIndex, 1)  ' 编辑新的文本内容
+                    currentIndex += 1  ' 设置新的下标
+                End If
+            End While
+        Else  ' 不区分大小写
+            While currentIndex <= oldContent.Length And currentIndex + Me.FindContent.Length < oldContent.Length  ' 下标有效
+                If oldContent.Substring(currentIndex, Me.FindContent.Length).ToUpper = Me.FindContent.ToUpper Then
+                    newContent &= Me.ReplaceContent  ' 编辑新的文本内容
+                    replaceCount += +1  ' 替换次数自增
+                    currentIndex += Me.FindContent.Length  ' 设置新的下标
+                Else
+                    newContent &= oldContent.Substring(currentIndex, 1)  ' 编辑新的文本内容
+                    currentIndex += 1  ' 设置新的下标
+                End If
+            End While
+        End If
+
+        If replaceCount = 0 Then
+            MessageBox.Show("找不到" & Chr(34) & Me.FindContent & Chr(34))
+            Exit Sub
+        End If
+
+        Me.MainPad.TB_Editor.Text = newContent  ' 更新主窗体的文本内容
+        MessageBox.Show("完成" & replaceCount & "处替换。")
+    End Sub
+
 End Class
