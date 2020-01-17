@@ -9,6 +9,15 @@
         Me.MainPad = mainPad
     End Sub
 
+    ' 监听键盘的按键
+    Private Sub KeysClick(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.Enter Then  ' 【回车键】被按下时
+            If BTN_Next.Enabled = True Then
+                BTN_Next.PerformClick()  ' 调用【查找下一个】按键
+            End If
+        End If
+    End Sub
+
     ' 查找内容
     Private Sub LB_FindContent_Click(sender As Object, e As EventArgs) Handles LB_FindContent.Click
         TB_FindContent.SelectAll()
