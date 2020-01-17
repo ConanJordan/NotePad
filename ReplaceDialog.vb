@@ -5,6 +5,7 @@
     Private ReplaceContent As String  ' 要替换的文本内容
     Private StartIndex As Integer  ' 开始查找的小标
     Private TargetIndex As Integer  ' 查找到的下标
+    Private NewIndex As Integer  ' 文本替换过后的下标
 
     Public Sub New(mainPad As NotePad)
         Me.MainPad = mainPad
@@ -133,17 +134,66 @@
 
     ' 查找下一个
     Private Sub BTN_Next_Click(sender As Object, e As EventArgs) Handles BTN_Next.Click
-        Find(CB_IsCaseSensitive.Checked, CB_IsLoop.Checked)
-    End Sub
-
-    ' 取消
-    Private Sub BTN_Cancel_Click(sender As Object, e As EventArgs) Handles BTN_Cancel.Click
-        Me.Close()
+        Find(CB_IsCaseSensitive.Checked, CB_IsLoop.Checked)  ' 执行查找
     End Sub
 
     ' 替换
     Private Sub BTN_Replace_Click(sender As Object, e As EventArgs) Handles BTN_Replace.Click
+        Me.ReplaceContent = TB_ReplaceContent.Text  ' 获取替换文本
 
+        ' 实现思路如下
+        ' ①如果主窗体的文本选中内容和要查找的内容一致的话，就替换该内容，结束本方法。
+        ' ②执行查找。如果能查找到符合要求的文本，就替换。如果未能查找到符合要求的文本，就结束本方法。
+
+        Me.FindContent = TB_FindContent.Text  ' 获取查找文本
+
+        If CB_IsCaseSensitive.Checked Then  ' 区分大小写
+            If Me.MainPad.TB_Editor.SelectedText = Me.FindContent And (Not Me.FindContent = Nothing) Then
+                Me.NewIndex = Me.MainPad.TB_Editor.SelectionStart + Me.ReplaceContent.Length  ' 获取替换后的新下标
+                ' 替换后的文本如下
+                ' 被替换文本的前面部分 + 替换文本 + 被替换文本的后面部分
+                Me.MainContent = Me.MainPad.TB_Editor.Text  ' 被替换文本的前面部分
+                Me.MainContent = Me.MainContent.Substring(0, Me.MainPad.TB_Editor.SelectionStart) _
+                    & Me.ReplaceContent _  ' 替换文本
+                    & Me.MainContent.Substring(Me.MainPad.TB_Editor.SelectionStart + Me.MainPad.TB_Editor.SelectionLength)  ' 被替换文本的后面部分
+                Me.MainPad.TB_Editor.Text = Me.MainContent
+                Me.MainPad.TB_Editor.SelectionStart = Me.NewIndex  ' 设置新下标
+                Exit Sub  ' 结束本方法
+            End If
+        Else  ' 不区分大小写
+            If Me.MainPad.TB_Editor.SelectedText.ToUpper = Me.FindContent.ToUpper And (Not Me.FindContent = Nothing) Then
+                Me.NewIndex = Me.MainPad.TB_Editor.SelectionStart + Me.ReplaceContent.Length  ' 获取替换后的新下标
+                ' 替换后的文本如下
+                ' 被替换文本的前面部分 + 替换文本 + 被替换文本的后面部分
+                Me.MainContent = Me.MainPad.TB_Editor.Text  ' 被替换文本的前面部分
+                Me.MainContent = Me.MainContent.Substring(0, Me.MainPad.TB_Editor.SelectionStart) _
+                    & Me.ReplaceContent _  ' 替换文本
+                    & Me.MainContent.Substring(Me.MainPad.TB_Editor.SelectionStart + Me.MainPad.TB_Editor.SelectionLength)  ' 被替换文本的后面部分
+                Me.MainPad.TB_Editor.Text = Me.MainContent
+                Me.MainPad.TB_Editor.SelectionStart = Me.NewIndex  ' 设置新下标
+                Exit Sub  ' 结束本方法
+            End If
+        End If
+
+        Find(CB_IsCaseSensitive.Checked, CB_IsLoop.Checked)  ' 执行查找
+        If Me.MainPad.TB_Editor.SelectedText = Nothing Then  ' 主窗体没有被选中的文本，也就是说没有查找到相应内容
+            Exit Sub
+        End If
+
+        Me.NewIndex = Me.MainPad.TB_Editor.SelectionStart + Me.ReplaceContent.Length  ' 获取替换后的新下标
+        ' 替换后的文本如下
+        ' 被替换文本的前面部分 + 替换文本 + 被替换文本的后面部分
+        Me.MainContent = Me.MainPad.TB_Editor.Text  ' 被替换文本的前面部分
+        Me.MainContent = Me.MainContent.Substring(0, Me.MainPad.TB_Editor.SelectionStart) _
+            & Me.ReplaceContent _  ' 替换文本
+            & Me.MainContent.Substring(Me.MainPad.TB_Editor.SelectionStart + Me.MainPad.TB_Editor.SelectionLength)  ' 被替换文本的后面部分
+        Me.MainPad.TB_Editor.Text = Me.MainContent
+        Me.MainPad.TB_Editor.SelectionStart = Me.NewIndex  ' 设置新下标
+    End Sub
+
+    ' 取消
+    Private Sub BTN_Cancel_Click(sender As Object, e As EventArgs) Handles BTN_Cancel.Click
+        Me.Close()  ' 关闭对话框
     End Sub
 
     ' 【查找内容】文本框
