@@ -292,4 +292,11 @@ Public Class NotePad
         Dialog_Find.InitializeComponent()  ' 初始化【查找】对话框
         Dialog_Find.Show()  ' 显示【查找】对话框
     End Sub
+
+    ' 替换
+    Private Sub MI_Replace_Click(sender As Object, e As EventArgs) Handles MI_Replace.Click
+        Dim Dialog_Replace As ReplaceDialog = New ReplaceDialog(Me)  ' 新建【替换】对话框
+        Dialog_Replace.InitializeComponent()  ' 初始化【替换】对话框
+        Dialog_Replace.Show()  ' 显示【替换】对话框
+    End Sub
 End Class

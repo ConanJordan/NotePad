@@ -21,7 +21,7 @@ Partial Class ReplaceDialog
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()>
-    Private Sub InitializeComponent()
+    Public Sub InitializeComponent()
         Me.LB_FindContent = New System.Windows.Forms.Label()
         Me.LB_ReplaceContent = New System.Windows.Forms.Label()
         Me.TB_FindContent = New System.Windows.Forms.TextBox()
