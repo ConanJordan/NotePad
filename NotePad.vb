@@ -247,7 +247,7 @@ Public Class NotePad
     Private Sub MI_AboutNotePad_Click(sender As Object, e As EventArgs) Handles MI_AboutNotePad.Click
         MessageBox.Show(
             "这是一个记事本软件。已实现Windows自带记事本软件的核心内容。" & vbCrLf &
-            "@Author 李敦煌",
+            "@Author 李舟",
             "记事本",
             MessageBoxButtons.OK)
     End Sub
