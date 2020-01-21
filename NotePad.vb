@@ -45,20 +45,19 @@ Public Class NotePad
             Exit Sub
         End If
 
-        fileNumber = FreeFile()  ' 取得文件号码
         TB_Editor.Text = ""  ' 清空文本框内容
         Me.currentContent = ""  ' 清空原文件缓存内容
-        FileOpen(Me.fileNumber, Me.filePath, OpenMode.Input)  ' 已读取模式打开文件
-        Do Until EOF(Me.fileNumber)
-            buff = LineInput(Me.fileNumber)  ' 逐行读取文件
-            'TB_Editor.Text = TB_Editor.Text & buff & vbCrLf  ' 在文本框里逐行写入文件
-            Me.currentContent = Me.currentContent & buff & vbCrLf  ' 向原文件缓存内容里写入数据
-        Loop
-        FileClose(Me.fileNumber)  ' 关闭文件
 
-        ' 去掉文本末尾的换行符
-        Me.currentContent = Me.currentContent.Substring(0, Me.currentContent.Length - 1)
-        TB_Editor.Text = Me.currentContent
+        Dim sReader As StreamReader = New StreamReader(Me.filePath, System.Text.Encoding.UTF8)  ' 以UTF-8的编码格式读取文件
+        buff = sReader.ReadLine()  ' 读取一行
+        While buff IsNot Nothing
+            Me.currentContent = Me.currentContent & buff & vbCrLf  ' 向原文件缓存内容里写入数据
+            buff = sReader.ReadLine()  ' 读取一行
+        End While
+        sReader.Close()  ' 关闭文件读取流
+
+        Me.currentContent = Me.currentContent.Substring(0, Me.currentContent.Length - 1)  ' 去掉文本末尾的换行符
+        TB_Editor.Text = Me.currentContent  ' 设置文本框的内容
         Me.isEdited = False
 
         ' 变更窗口的标题内容
